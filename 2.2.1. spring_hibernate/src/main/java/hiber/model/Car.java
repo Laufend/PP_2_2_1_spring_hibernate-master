@@ -9,13 +9,17 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cars_id")
-    private Long id;
+    private Long cars_id;
 
     @Column(name = "model")
     private String model;
 
     @Column(name = "series")
     private int series;
+
+    @OneToOne(mappedBy = "car",
+            cascade = CascadeType.ALL)
+    private User user;
 
     public Car() {
     }
@@ -27,6 +31,14 @@ public class Car {
 
     public String getModel() {
         return model;
+    }
+
+    public Long getCars_id() {
+        return cars_id;
+    }
+
+    public void setCars_id(Long cars_id) {
+        this.cars_id = cars_id;
     }
 
     public void setModel(String model) {
@@ -41,10 +53,20 @@ public class Car {
         this.series = series;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public User setUser(User user) {
+        this.user = user;
+        return user;
+    }
+
     @Override
     public String toString() {
         return "Car{" +
-                "model='" + model + '\'' +
+                "id=" + cars_id +
+                ", model='" + model + '\'' +
                 ", series=" + series +
                 '}';
     }

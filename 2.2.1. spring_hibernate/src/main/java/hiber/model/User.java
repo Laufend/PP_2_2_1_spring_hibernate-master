@@ -24,8 +24,9 @@ public class User {
    @JoinColumn(name = "cars_id")
    private Car car;
 
-   public User() {}
-   
+   public User() {
+   }
+
    public User(String firstName, String lastName, String email) {
       this.firstName = firstName;
       this.lastName = lastName;
@@ -68,7 +69,18 @@ public class User {
       return car;
    }
 
-   public void setCar(Car car) {
+   public Car setCar(Car car) {
       this.car = car;
+      return car;
+   }
+
+   @Override
+   public String toString() {
+      return "User{" +
+              "firstName='" + firstName + '\'' +
+              ", lastName='" + lastName + '\'' +
+              ", email='" + email + '\'' +
+              ", car=" + car +
+              '}';
    }
 }
